@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 
 namespace OneInch.Http
 {
-    public class OneInchApiAdapter : IOneInchApiAdapter
+    public class OneInchApiAdapter : IApiAdapter
     {
         readonly IHttpClientFactory _httpClient;
         IRequestPathBuilder _pathBuilder;
