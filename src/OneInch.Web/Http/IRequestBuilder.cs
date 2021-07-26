@@ -1,8 +1,8 @@
 
-namespace OneInch.Http
+namespace OneInch.Web
 {
     public interface IRequestBuilder
     {
-        string GetParameter(object request);
+        string GetCriteria(object request);
     }
 }

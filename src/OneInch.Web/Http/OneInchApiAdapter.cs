@@ -1,14 +1,15 @@
 using System.Threading.Tasks;
+using System.Net.Http;
 
-namespace OneInch.Http
+namespace OneInch.Web
 {
     public class OneInchApiAdapter : IApiAdapter
     {
         readonly IHttpClientFactory _httpClient;
-        IRequestPathBuilder _pathBuilder;
+        //IRequestBuilder _pathBuilder;
 
         const string CLIENT_API_LOOKUP_KEY = "OneInchApi";
-        public OneInchClient(IHttpClientFactory httpClient)
+        public OneInchApiAdapter(IHttpClientFactory httpClient)
         {
             _httpClient = httpClient;   
         }

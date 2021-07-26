@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 
-namespace OneInch.Http
+namespace OneInch.Web
 {
     public interface IApiAdapter
     {
-        Task<string> SendRequest();        
+        Task<string> SendRequest(string path);        
     }
 }
