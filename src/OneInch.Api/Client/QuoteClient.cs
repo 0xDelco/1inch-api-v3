@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace OneInch.Api
 {
-public class QuoteClient 
+public class QuoteClient : IQuoteClient
     {
         IApiAdapter _api;
         public QuoteClient(IApiAdapter apiAdapter)

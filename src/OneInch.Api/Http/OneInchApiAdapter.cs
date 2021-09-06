@@ -6,18 +6,31 @@ namespace OneInch.Api
     public class OneInchApiAdapter : IApiAdapter
     {
         readonly IHttpClientFactory _httpClient;
-        //IRequestBuilder _pathBuilder;
 
-        const string CLIENT_API_LOOKUP_KEY = "OneInchApi";
+        BlockchainEnum _targetChain;
+
         public OneInchApiAdapter(IHttpClientFactory httpClient)
         {
             _httpClient = httpClient;   
+
+            this.SetDefaultChain();
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        void SetDefaultChain() => _targetChain = BlockchainEnum.ETHEREUM;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="blockchain"></param>
+        public void SwitchBlockchain(BlockchainEnum blockchain) => _targetChain = blockchain;        
+        
         public async Task<string> SendRequest(string path)        
         { 
-            // TODO: Change this from a dynamic string to config or default.
-            var client = _httpClient.CreateClient(CLIENT_API_LOOKUP_KEY);
-
+            var client = _httpClient.CreateClient(((int)_targetChain).ToString());
+            
             var response = await client.GetAsync(client.BaseAddress + path); 
             return await response.Content.ReadAsStringAsync();              
         }      

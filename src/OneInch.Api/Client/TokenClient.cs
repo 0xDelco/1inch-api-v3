@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace OneInch.Api
 {
-    public class TokenClient
+    public class TokenClient : ITokenClient
     {
         IApiAdapter _api;
         public TokenClient(IApiAdapter apiAdapter)

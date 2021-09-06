@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OneInch.Api
 {
-    public class ApproveClient
+    public class ApproveClient : IApproveClient
     {
         IApiAdapter _api;
         
@@ -24,9 +24,9 @@ namespace OneInch.Api
             return JsonSerializer.Deserialize<ApproveSpenderResponseDto>(response);
         }
 
-        public async Task<ApproveCallDataResponseDto> GetApprovedCallData(ApproveCalldataRequest request)
+        public async Task<ApproveCallDataResponseDto> GetApprovedCallData(IOneInchRequest request)
         {
-            var criteria = OneInchRequestBuilder.GetCriteria(request);
+            var criteria = request.GetParameters();
             var response = await _api.SendRequest(criteria); 
             return JsonSerializer.Deserialize<ApproveCallDataResponseDto>(response);
         }

@@ -1,35 +1,34 @@
 
 namespace OneInch.Api
 {
-    public class OneInchClient
+    public class OneInchClient : IOneInchClient
     {
         IApiAdapter _api;
-        ApproveClient _approveClient;
-        DefaultClient _defaultClient;
-        HealthCheckClient _healthCheckClient;
-        ProtocolClient _protocolClient;
-        /*QuoteClient _quoteClient;
-        SwapClient _swapClient;
-        TokenClient _tokenClient;*/
+        
         public OneInchClient(IApiAdapter apiAdapter)
         {            
             _api = apiAdapter;
-            _approveClient = new ApproveClient(_api);
-            _defaultClient = new DefaultClient(_api);
-            _protocolClient = new ProtocolClient(_api);
-            _healthCheckClient = new HealthCheckClient(_api);
-            /*_quoteClient = new QuoteClient(_api);
-            _swapClient = new SwapClient(_api);
-            _tokenClient = new TokenClient(_api);*/
-        }   
+            Approve = new ApproveClient(_api);
+            Default = new DefaultClient(_api);
+            Protocol = new ProtocolClient(_api);
+            HealthCheck = new HealthCheckClient(_api);
+            Quote = new QuoteClient(_api);
+            Swap = new SwapClient(_api);
+            Token = new TokenClient(_api);
+        }  
 
-        public ApproveClient Approve { get{return _approveClient;}}
-        
-        public DefaultClient Default { get {return _defaultClient;}}
-        public HealthCheckClient HealthCheck { get {return _healthCheckClient;}}
-        public ProtocolClient Protocol { get {return _protocolClient;}}
-        /*public QuoteClient Quote {get{return _quoteClient;}}
-        public SwapClient Swap {get{return _swapClient;}}
-        public TokenClient Token {get{return _tokenClient;}}*/
+        public IOneInchClient SwitchBlockchain(BlockchainEnum blockchain)
+        { 
+            _api.SwitchBlockchain(blockchain);
+            return this;
+        } 
+
+        public IApproveClient Approve { get;}
+        public DefaultClient Default { get ;}
+        public HealthCheckClient HealthCheck { get;}
+        public ProtocolClient Protocol { get;}
+        public QuoteClient Quote {get;}
+        public SwapClient Swap {get;}
+        public TokenClient Token {get;}
     }
 }

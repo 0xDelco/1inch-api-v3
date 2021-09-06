@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace OneInch.Api
 {
-    public class SwapClient 
+    public class SwapClient : ISwapClient
     {
         IApiAdapter _api;
         public SwapClient(IApiAdapter apiAdapter)

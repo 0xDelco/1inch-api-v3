@@ -5,13 +5,7 @@ using System.Threading.Tasks;
 
 namespace OneInch.Api
 {
-
-    public interface IDefaultClient
-    {
-        Task<PresetList> GetPresets();
-    }
-
-    public class DefaultClient
+    public class DefaultClient : IDefaultClient
     {
         IApiAdapter _api;
         

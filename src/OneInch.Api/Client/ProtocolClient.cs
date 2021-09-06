@@ -5,13 +5,7 @@ using System.Collections.Generic;
 
 namespace OneInch.Api
 {
-    public interface IProtocolService
-    {
-        ProtocolList  GetNames();
-        List<Protocol>  GetAll();
-    }
-
-    public class ProtocolClient
+    public class ProtocolClient : IProtocolClient
     {
         IApiAdapter _api;
         public ProtocolClient(IApiAdapter apiAdapter)
