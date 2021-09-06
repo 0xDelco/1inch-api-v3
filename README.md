@@ -11,6 +11,7 @@ Each of the objects in the domain are meant to provide the inbound and outbound 
 - ✅ Ethereum
 - ✅ Binance Smart Chain
 - ✅ Polygon
+- ✅ Polygon
 
 ## Getting Started
 
