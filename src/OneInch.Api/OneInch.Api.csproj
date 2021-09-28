@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Version>0.0.1</Version>
+    <Version>1.0.2</Version>
     <Description>
     A .NET client library targeting **v3** of the 1inch DeFi aggregator API. The intention is to provide a simple wrapper to consume and model each of the available REST end points.
 
