@@ -143,8 +143,8 @@ You can find all of the official Swagger documentation for the various chain cli
 - [Swap Client](/src/OneInch.Api/Client/SwapClient.cs) 
   - https://docs.1inch.io/api/quote-swap
 - [Protocols Client](/src/OneInch.Api/Client/ProtocolsClient.cs) 
-  - https://api.1inch.exchange/v3.0/1/protocols
-- [Token Client](/src/OneInch.Api/Client/TokenClient.cs) 
+  - https://docs.1inch.io/api/protocols
+- [Token Client](/src/OneInch.Api/Client/TokenClient.cs)
   - https://docs.1inch.io/api/tokens
 - [Default Client](/src/OneInch.Api/Client/DefaultClient.cs) 
 
