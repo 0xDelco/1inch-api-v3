@@ -4,7 +4,7 @@ namespace OneInch.Api
 {
     public interface IApproveClient
     {
-        Task<ApproveCallDataResponseDto> GetApprovedCallData(IOneInchRequest request);
+        Task<ApproveCallDataResponseDto> GetApprovedCallData(ApproveCalldataRequest request);
         Task<ApproveSpenderResponseDto> GetApprovedSpender();
     }
 }

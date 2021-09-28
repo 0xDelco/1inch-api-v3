@@ -6,6 +6,6 @@ namespace OneInch.Api
 {
    public interface IQuoteClient
    {
-       Task<Quote> GetQuote(IOneInchRequest request);
+       Task<Quote> GetQuote(QuoteRequest request);
    }
 }

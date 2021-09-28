@@ -5,6 +5,6 @@ namespace OneInch.Api
 {
     public interface ISwapClient
     {
-        Task<Swap> GetSwap(IOneInchRequest request);
+        Task<Swap> GetSwap(SwapRequest request);
     }
 }
