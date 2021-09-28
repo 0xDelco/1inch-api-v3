@@ -1,63 +1,155 @@
-# 1inch .NET API Client (v3)
+# **1inch .NET API Client (v3)**
 
-A .NET client library targeting **v3** of the [1inch](https://app.1inch.io) defi aggregator [API](https://docs.1inch.io/api/). The intention is to provide a simple wrapper to consume/model each of the available REST end points. 
+A .NET client library targeting **v3** of the [1inch](https://app.1inch.io) DeFi aggregator [API](https://docs.1inch.io/api/). The intention is to provide a simple wrapper to consume and model each of the available REST end points.
 
-Each of the objects in the domain are meant to provide the inbound and outbound structures needed to interact with the API in an unopinionated way. 
+Each of the objects in the domain are meant to provide the inbound and outbound structures needed to interact with the API in a straight forward and object oriented way.
 
-# Supported Frameworks
+**NOTE:** This project has no affiliation with the 1inch team or protocol and is simply meant as an effort for the .NET community.
 
-* [.NET 5.0.0](https://dotnet.microsoft.com/download/dotnet/5.0) (or greater)
+## Supported Blockchains
 
-# Getting Started
+- ✅ Ethereum
+- ✅ Binance Smart Chain
+- ✅ Polygon
+- ✅ Optimism
 
-1inch .NET API is [available on NuGet](https://www.nuget.org/packages/<tbd>/):
+
+## Getting Started
+
+The 1inch .NET API is [available on NuGet](https://www.nuget.org/packages/OneInch.Api/):
 
 ```
-dotnet add package OneInchApi
-```
-# Usage Examples
 
-Each service requires an underlying [HttpClient](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=net-5.0) dependency. This can be invoked manually or using your preferred DI container library.
+dotnet add package OneInch.Api
+
+```
+
+## Quick Examples
+
+Initial client setup:
 
 ```c#
-var client = new OneInchClient(new HttpClient());
-```
-*NOTE: A container set up example is included in the OneInch.Console*
 
+// httpClient as some instance of HttpClient (DI container, self invoked, etc.)
+using(var api = new OneInchClient(httpClient))
+{
+    // ...
+}
+
+```
 
 Simple health check:
+
 ```c#
-var healthService = new HealthCheckService(client);
-var status = await healthService.GetStatus();
+var status = await api.HealthCheck.GetStatus();
+
 Console.WriteLine("API Status is: " + status.status)
 
 // API Status is: OK
+
 ```
 
-Requesting all support token information:
+Requesting all supported token information:
+
 ```c#
-var tokenService = new TokenService(client);
-var tokenList = await tokenService.GetAll();
+var tokenList = await api.Token.GetAll();
 
 foreach(var token in tokenList.tokens)
 {
+
     Console.WriteLine("Token Symbol: " + token.symbol);
+
 }
-// Token Symbol: STX
-// Token Symbol: BTC++
-// Token Symbol: LID
-// Token Symbol: UMA
+
+// Token Symbol: SNX
+
+// Token Symbol: ETH
+
+// Token Symbol: ZRX
+
+// Token Symbol: MATIC
+
 // ... etc.
+
+
 ```
 
-# Available Services
+Chain switching (Ethereum is default target):
 
-* [Approve Service](/src/OneInch.Domain/Services/ApproveService.cs) - https://docs.1inch.io/api/approve
-* [HealthCheck Service](/src/OneInch.Domain/Services/HealthCheckService.cs) - https://docs.1inch.io/api/healthcheck
-* [Quote Service](/src/OneInch.Domain/Services/QuoteService.cs) - https://docs.1inch.io/api/quote-swap
-* [Swap Service](/src/OneInch.Domain/Services/SwapService.cs) - https://docs.1inch.io/api/quote-swap
-* [Protocols Service](/src/OneInch.Domain/Services/ProtocolsService.cs) - https://api.1inch.exchange/v3.0/1/protocols
-* [Token Service](/src/OneInch.Domain/Services/TokenService.cs) - https://docs.1inch.io/api/tokens 
+```c#
+var tokenList = await api
+                        .SwitchBlockchain(BlockchainEnum.POLYGON) // switch to Polygon 
+                        .Token
+                        .GetAll();
+```
 
+Request quote -- 1 DAI for 1 USDC:
+
+```c#
+
+// https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f
+const string DAI_TOKEN_ADDRESS = "0x6b175474e89094c44da98b954eedeac495271d0f";
+
+// https://etherscan.io/token/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48
+const string USDC_TOKEN_ADDRESS = "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48";
+
+var request = new QuoteRequest()
+{
+    fromTokenAddress = DAI_TOKEN_ADDRESS,
+    toTokenAddress = USDC_TOKEN_ADDRESS,
+    amount = 100000000000000000 // 1 DAI
+};
+
+await api
+        .Quote
+        .GetQuote(request);
+
+```
+
+Request swap:
+
+```c#
+
+var request = new SwapRequest()
+{
+    fromTokenAddress = DAI_TOKEN_ADDRESS,
+    toTokenAddress = USDC_TOKEN_ADDRESS,
+    fromAddress = "<wallet_address>",
+    amount =  100000000000000000, 
+    slippage = 1
+};
+
+return await api
+              .Swap
+              .GetSwap(request);
+
+```
+
+
+## Supported Frameworks
+
+- [.NET 5.0.0](https://dotnet.microsoft.com/download/dotnet/5.0) (or greater)
+
+## Available Clients
+
+- [Approve Client](/src/OneInch.Domain/Services/ApproveService.cs) 
+  - https://docs.1inch.io/api/approve
+- [HealthCheck Client](/src/OneInch.Domain/Services/HealthCheckService.cs) 
+  - https://docs.1inch.io/api/healthcheck
+- [Quote Client](/src/OneInch.Domain/Services/QuoteService.cs) 
+  - https://docs.1inch.io/api/quote-swap
+- [Swap Client](/src/OneInch.Domain/Services/SwapService.cs) 
+  - https://docs.1inch.io/api/quote-swap
+- [Protocols Client](/src/OneInch.Domain/Services/ProtocolsService.cs) 
+  - https://api.1inch.exchange/v3.0/1/protocols
+- [Token Client](/src/OneInch.Domain/Services/TokenService.cs) 
+  - https://docs.1inch.io/api/tokens
+
+## Road Map
+
+- [ ] Unit Test Coverage
+- [ ] Swapping logic flow diagrams 
+- [ ] Advanced API usage examples
+- [ ] Examples to sign and send swap transactions via [Nethereum]([https://nethereum.com/](https://nethereum.com/)).
 
 
