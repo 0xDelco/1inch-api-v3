@@ -119,9 +119,9 @@ var request = new SwapRequest()
     slippage = 1
 };
 
-return await api
-              .Swap
-              .GetSwap(request);
+await api
+        .Swap
+        .GetSwap(request);
 
 ```
 
