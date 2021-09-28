@@ -83,7 +83,7 @@ var tokenList = await api
                         .GetAll();
 ```
 
-Request swap Quote -- 1 DAI for 1 USDC:
+Request quote -- 1 DAI for 1 USDC:
 
 ```c#
 
@@ -105,6 +105,8 @@ await api
         .GetQuote(request);
 
 ```
+
+Request swap:
 
 ```c#
 
