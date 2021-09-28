@@ -132,18 +132,21 @@ return await api
 
 ## Available Clients
 
-- [Approve Client](/src/OneInch.Domain/Services/ApproveService.cs) 
+You can find all of the official Swagger documentation for the various chain clients [here](https://docs.1inch.io/api/).
+
+- [Approve Client](/src/OneInch.Api/Client/ApproveClient.cs) 
   - https://docs.1inch.io/api/approve
-- [HealthCheck Client](/src/OneInch.Domain/Services/HealthCheckService.cs) 
+- [HealthCheck Client](/src/OneInch.Api/Client/HealthCheckClient.cs) 
   - https://docs.1inch.io/api/healthcheck
-- [Quote Client](/src/OneInch.Domain/Services/QuoteService.cs) 
+- [Quote Client](/src/OneInch.Api/Client/QuoteClient.cs) 
   - https://docs.1inch.io/api/quote-swap
-- [Swap Client](/src/OneInch.Domain/Services/SwapService.cs) 
+- [Swap Client](/src/OneInch.Api/Client/SwapClient.cs) 
   - https://docs.1inch.io/api/quote-swap
-- [Protocols Client](/src/OneInch.Domain/Services/ProtocolsService.cs) 
+- [Protocols Client](/src/OneInch.Api/Client/ProtocolsClient.cs) 
   - https://api.1inch.exchange/v3.0/1/protocols
-- [Token Client](/src/OneInch.Domain/Services/TokenService.cs) 
+- [Token Client](/src/OneInch.Api/Client/TokenClient.cs) 
   - https://docs.1inch.io/api/tokens
+- [Default Client](/src/OneInch.Api/Client/DefaultClient.cs) 
 
 ## Road Map
 
