@@ -8,11 +8,11 @@ namespace OneInch.Api
    {
         IOneInchClient SwitchBlockchain(BlockchainEnum blockchain);
         IApproveClient Approve { get;}
-        DefaultClient Default { get ;}
-        HealthCheckClient HealthCheck { get;}
-        ProtocolClient Protocol { get;}
-        QuoteClient Quote {get;}
-        SwapClient Swap {get;}
-        TokenClient Token {get;}
+        IDefaultClient Default { get ;}
+        IHealthCheckClient HealthCheck { get;}
+        IProtocolClient Protocol { get;}
+        IQuoteClient Quote {get;}
+        ISwapClient Swap {get;}
+        ITokenClient Token {get;}
    }
 }
