@@ -3,14 +3,13 @@ using System.Text.Json;
 
 namespace OneInch.Api
 {
-
-/// <summary> 
-/// Client that manages requests with the "Quote" service.
-/// </summary>
-/// <remarks>Get quote and call data for an aggregated swap.</remarks>  
-/// <see href="https://docs.1inch.io/api/quote-swap">Quotes documentation</see>  
-public class QuoteClient : IQuoteClient
-{
+    /// <summary> 
+    /// Client that manages requests with the "Quote" service.
+    /// </summary>
+    /// <remarks>Get quote and call data for an aggregated swap.</remarks>  
+    /// <see href="https://docs.1inch.io/api/quote-swap">Quotes documentation</see>  
+    public class QuoteClient : IQuoteClient
+    {
         IApiAdapter _api;
 
         /// <summary>
