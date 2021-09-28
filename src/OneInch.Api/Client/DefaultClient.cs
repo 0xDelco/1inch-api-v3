@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 namespace OneInch.Api
 {
-
     /// <summary>
     /// Client that manages requests with the "Default" service.
     /// </summary>
