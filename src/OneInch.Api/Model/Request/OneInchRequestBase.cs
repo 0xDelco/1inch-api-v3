@@ -66,6 +66,10 @@ namespace OneInch.Api
 
                         if(IsPropertyList(propValue)) 
                             propValue = FlattenPropertyList(propValue);
+                        
+                        var propValueCheck =  propValue.ToString();
+                        
+                        if(String.IsNullOrEmpty(propValueCheck) || propValueCheck == "0") continue;
 
                         if(!String.IsNullOrEmpty(query)) query += "&"; 
                         query += oipValue + "=" + propValue;
@@ -98,7 +102,7 @@ namespace OneInch.Api
         {
             var attr = (OneInchRouteAttribute)Attribute.GetCustomAttribute(this.GetType(), typeof (OneInchRouteAttribute));
             if(attr != null)
-                return "/" + attr.Route;
+                return attr.Route;
             else
             {
                 return String.Empty;

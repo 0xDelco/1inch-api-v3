@@ -1,15 +1,9 @@
 
 namespace OneInch.Api
 {
-    public interface IOneInchSettings
-    {
-        BlockchainSettings Ethereum {get;set;}
-        BlockchainSettings BinanceSmartChain {get;set;}
-        BlockchainSettings Polygon {get;set;}
-        BlockchainSettings Optimism {get;set;}
-
-    }
-
+    /// <summary>
+    /// Model for OneInch API configuration settings.
+    /// </summary>
     public class OneInchSettings : IOneInchSettings
     {
         public BlockchainSettings Ethereum {get;set;}
@@ -19,7 +13,6 @@ namespace OneInch.Api
         public BlockchainSettings Polygon {get;set;}
 
         public BlockchainSettings Optimism {get;set;}
-
     }
 
 }

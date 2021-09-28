@@ -4,6 +4,9 @@ namespace OneInch.Api
 {
     public class Paths
     {
+        /// <summary>
+        /// Paths that define locations for API end points.
+        /// </summary>
         public class API
         {
             public static readonly string HealthCheck = "healthcheck";

@@ -5,7 +5,7 @@ using System;
 namespace OneInch.Api
 {   
     [OneInchRoute("approve/calldata")]
-    public class ApproveCalldataRequest
+    public class ApproveCalldataRequest : OneInchRequestBase
     {
         [OneInchParameter]
         public string tokenAddress {get;set;}

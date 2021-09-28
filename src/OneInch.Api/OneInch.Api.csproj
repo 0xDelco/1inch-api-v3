@@ -2,10 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+    <Version>0.0.1</Version>
+    <Description>
+    A .NET client library targeting **v3** of the 1inch DeFi aggregator API. The intention is to provide a simple wrapper to consume and model each of the available REST end points.
+
+    Each of the objects in the domain are meant to provide the inbound and outbound structures needed to interact with the API in a straight forward and object oriented way.
+    </Description>
+    <RepositoryUrl>https://github.com/0xDelco/1inch-api-v3.git</RepositoryUrl> 
+    <RepositoryType>git</RepositoryType> 
+   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
   </ItemGroup>
 

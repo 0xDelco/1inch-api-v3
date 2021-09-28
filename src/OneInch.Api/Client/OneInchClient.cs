@@ -23,6 +23,7 @@ namespace OneInch.Api
             return this;
         } 
 
+
         public IApproveClient Approve { get;}
         public DefaultClient Default { get ;}
         public HealthCheckClient HealthCheck { get;}
@@ -30,5 +31,6 @@ namespace OneInch.Api
         public QuoteClient Quote {get;}
         public SwapClient Swap {get;}
         public TokenClient Token {get;}
+
     }
 }

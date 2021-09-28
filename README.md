@@ -13,9 +13,10 @@ Each of the objects in the domain are meant to provide the inbound and outbound 
 - ✅ Polygon
 - ✅ Optimism
 
+
 ## Getting Started
 
-1inch .NET API is [available on NuGet](https://www.nuget.org/packages/<tbd>/):
+The 1inch .NET API is [available on NuGet](https://www.nuget.org/packages/OneInch.Api/):
 
 ```
 
@@ -28,8 +29,8 @@ dotnet add package OneInch.Api
 Initial client setup:
 
 ```c#
-// httpClient as some instance of HttpClient (DI container, self invoked, etc.)
 
+// httpClient as some instance of HttpClient (DI container, self invoked, etc.)
 using(var api = new OneInchClient(httpClient))
 {
     // ...
@@ -70,15 +71,58 @@ foreach(var token in tokenList.tokens)
 
 // ... etc.
 
+
 ```
 
-Request Token swap quote:
+Chain switching (Ethereum is default target):
+
+```c#
+var tokenList = await api
+                        .SwitchBlockchain(BlockchainEnum.POLYGON) // switch to Polygon 
+                        .Token
+                        .GetAll();
+```
+
+Request swap Quote -- 1 DAI for 1 USDC:
 
 ```c#
 
-var tokenList = await tokenClient.GetAll();
+// https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f
+const string DAI_TOKEN_ADDRESS = "0x6b175474e89094c44da98b954eedeac495271d0f";
+
+// https://etherscan.io/token/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48
+const string USDC_TOKEN_ADDRESS = "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48";
+
+var request = new QuoteRequest()
+{
+    fromTokenAddress = DAI_TOKEN_ADDRESS,
+    toTokenAddress = USDC_TOKEN_ADDRESS,
+    amount = 100000000000000000 // 1 DAI
+};
+
+await api
+        .Quote
+        .GetQuote(request);
 
 ```
+
+```c#
+
+var request = new SwapRequest()
+{
+    fromTokenAddress = DAI_TOKEN_ADDRESS,
+    toTokenAddress = USDC_TOKEN_ADDRESS,
+    fromAddress = "<wallet_address>",
+    amount =  100000000000000000, 
+    slippage = 1
+};
+
+return await api
+              .Swap
+              .GetSwap(request);
+
+```
+
 
 ## Supported Frameworks
 

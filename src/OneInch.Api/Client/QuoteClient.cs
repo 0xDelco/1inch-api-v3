@@ -18,8 +18,6 @@ public class QuoteClient : IQuoteClient
         /// <returns></returns>
         public async Task<Quote> GetQuote(IOneInchRequest request)
         {
-            var validator = new QuoteRequestValidator();
-            //validator.ValidateAndThrow(request);
             var criteria = request.GetParameters();
             var response = await _api.SendRequest(criteria);
             return JsonSerializer.Deserialize<Quote>(response);

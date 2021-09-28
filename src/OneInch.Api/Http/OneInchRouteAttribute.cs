@@ -3,13 +3,24 @@ using System;
 
 namespace OneInch.Api
 {
-    public class OneInchRouteAttribute : System.Attribute
+    /// <summary>
+    /// Attribute to decorate API request classes to identify their route path.
+    /// </summary>
+    internal class OneInchRouteAttribute : System.Attribute
     {
-        public OneInchRouteAttribute(string route = null)
+        /// <summary>
+        /// Constructs attribute to assign route with the specified value.
+        /// </summary>
+        /// <param name="route">Route path for the decorated request.</param>
+        public OneInchRouteAttribute(string route)
         {
-            this.Route = new(route);
+            this.Route = route;
         }
 
-        public Uri Route {get;set;}
+        /// <summary>
+        /// Route path for the decorated request.
+        /// </summary>
+        /// <value>String route value</value>
+        public string Route {get;set;}
     }
 }
