@@ -159,6 +159,17 @@ Below is a visualization of the overall process being executed when the SwapDAIF
 
 **NOTE:** SignAndSendTransaction is a placeholder method for those stages of the process. No transaction data is being sent to be mined/verifed on-chain.
 
+```c#
+      /// <summary>
+      /// Signs transaction data with wallet and submits transaction to EVM blockchain to be mined.
+      /// </summary>
+      /// <param name="data">Transaction data string.</param>
+      static void SignAndSendTransaction(string data)
+      {
+          // implement web3 client like Nethereum to submit transactions.
+      }
+```
+
 ## Supported Frameworks
 
 - [.NET 5.0.0](https://dotnet.microsoft.com/download/dotnet/5.0) (or greater)
