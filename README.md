@@ -122,9 +122,53 @@ var request = new SwapRequest()
 await api
         .Swap
         .GetSwap(request);
-
 ```
 
+## Hello DeFi
+
+A functional "Hello DeFi" example application exists [here](/src/OneInch.Examples/Console/HelloDeFi/). This application works through the
+fundamental steps of approving token spend, requesting a swap quote, and then requesting the final swap transaction data through the OneInch.Api client. 
+
+```c#
+  /// <summary>
+  /// Executes basic swap of DAI for USDC.
+  /// </summary>
+  static void SwapDAIForUSDC()
+  {
+      // Step 1
+      var approval = ApproveDaiSpend().Result;
+      
+      // Step 2
+      SignAndSendTransaction(approval.data);
+
+      // Step 3
+      var quote = GetQuote().Result;
+
+      // Step 4
+      var swap = GetSwap(quote).Result;
+      
+      // Step 5
+      SignAndSendTransaction(swap.tx.data);
+  }
+```
+
+Below is a visualization of the overall process being executed when the SwapDAIForUSDC() method is called:
+
+![Basic Swap](/docs/diagrams/basic_swap.drawio.png)
+
+
+**NOTE:** SignAndSendTransaction is a placeholder method for those stages of the process. No transaction data is being sent to be mined/verifed on-chain.
+
+```c#
+    /// <summary>
+    /// Signs transaction data with wallet and submits transaction to EVM blockchain to be mined.
+    /// </summary>
+    /// <param name="data">Transaction data string.</param>
+    static void SignAndSendTransaction(string data)
+    {
+        // implement web3 client like Nethereum to submit transactions.
+    }
+```
 
 ## Supported Frameworks
 
