@@ -37,19 +37,41 @@ namespace HelloDeFi
             }
         }
         
+        /// <summary>
+        /// Executes basic swap of DAI for USDC.
+        /// </summary>
         static void SwapDAIForUSDC()
         {
+            // Step 1
             var approval = ApproveDaiSpend().Result;
             
-            // sign and send approval.data to chain
+            // Step 2
+            SignAndSendTransaction(approval.data);
 
+            // Step 3
             var quote = GetQuote().Result;
 
+            // Step 4
             var swap = GetSwap(quote).Result;
             
-            // sign and send swap.data to chain
+            // Step 5
+            SignAndSendTransaction(swap.tx.data);
         }
 
+        /// <summary>
+        /// Signs transaction data with wallet and submits transaction to EVM blockchain to be mined.
+        /// </summary>
+        /// <param name="data">Transaction data string.</param>
+        /// <remarks>NOTE: This is not active until a web3 client is implemented.</remarks>
+        static void SignAndSendTransaction(string data)
+        {
+            // implement web3 client like Nethereum to submit transactions.
+        }
+
+        /// <summary>
+        /// Gets data from API for swap of 1 DAI for 1 USDC.
+        /// </summary>
+        /// <returns>Swap response from API</returns>
         static async Task<Swap> GetSwap(Quote quote)
         {
             var request = new SwapRequest()
@@ -67,7 +89,7 @@ namespace HelloDeFi
         }
 
         /// <summary>
-        /// Gets quote from API to swap 5000 DAI for USDC.
+        /// Gets quote data from API to swap 1 DAI for 1 USDC.
         /// </summary>
         /// <returns>Quote response from API</returns>
         static async Task<Quote> GetQuote()
