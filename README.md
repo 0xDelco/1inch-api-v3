@@ -122,8 +122,8 @@ var request = new SwapRequest()
 await api
         .Swap
         .GetSwap(request);
-
 ```
+
 ## Hello DeFi
 
 A functional "Hello DeFi" example application exists [here](/src/OneInch.Examples/Console/HelloDeFi/). This application works through the
