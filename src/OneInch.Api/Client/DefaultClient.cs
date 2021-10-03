@@ -19,6 +19,7 @@ namespace OneInch.Api
         /// <param name="apiAdapter">IApiAdapter to manage HTTPS requests.</param>
         public DefaultClient(IApiAdapter apiAdapter)
         {            
+            Guard.ArgumentsAreNotNull(apiAdapter);
             _api = apiAdapter;
         }   
 

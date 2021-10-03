@@ -13,7 +13,9 @@ namespace OneInch.Api
     {
         IApiAdapter _api;
         public TokenClient(IApiAdapter apiAdapter)
-        {            
+        {          
+            Guard.ArgumentsAreNotNull(apiAdapter);
+              
             _api = apiAdapter;
         }
 

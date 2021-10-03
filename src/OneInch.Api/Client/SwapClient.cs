@@ -13,7 +13,8 @@ namespace OneInch.Api
     {
         IApiAdapter _api;
         public SwapClient(IApiAdapter apiAdapter)
-        {            
+        {          
+            Guard.ArgumentsAreNotNull(apiAdapter);  
             _api = apiAdapter;
         }
 

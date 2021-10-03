@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using System.Net.Http;
 using System;
+
 namespace OneInch.Api
 {
     /// <summary>
@@ -14,6 +15,8 @@ namespace OneInch.Api
 
         public OneInchApiAdapter(IHttpClientFactory httpClient)
         {
+            Guard.ArgumentsAreNotNull(httpClient);
+
             _httpClient = httpClient;   
 
             this.SetDefaultChain();
@@ -22,7 +25,7 @@ namespace OneInch.Api
         /// <summary>
         /// Sets default blockchain API the adapter should initialize with as the target.
         /// </summary>
-        void SetDefaultChain() => _targetChain = BlockchainEnum.ETHEREUM;
+        public void SetDefaultChain() => _targetChain = BlockchainEnum.ETHEREUM;
         
         /// <summary>
         /// Sets the target blockchain API the adapter will target.
@@ -45,6 +48,12 @@ namespace OneInch.Api
             var response = await client.GetAsync(requestAddress); 
             return await response.Content.ReadAsStringAsync();              
         } 
+
+        /// <summary>
+        /// Target chain the client will build requests for.
+        /// </summary>
+        /// <value>Set BlockchainEnum value.</value>
+        public BlockchainEnum TargetChain { get { return _targetChain; }}
     }
 }    
     
