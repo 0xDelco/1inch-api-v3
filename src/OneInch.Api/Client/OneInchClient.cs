@@ -14,7 +14,9 @@ namespace OneInch.Api
         /// </summary>
         /// <param name="apiAdapter">IApiAdapter to manage HTTPS requests.</param>
         public OneInchClient(IApiAdapter apiAdapter)
-        {            
+        {           
+            Guard.ArgumentsAreNotNull(apiAdapter); 
+
             _api = apiAdapter;
             Approve = new ApproveClient(_api);
             Default = new DefaultClient(_api);
@@ -34,6 +36,12 @@ namespace OneInch.Api
             _api.SwitchBlockchain(blockchain);
             return this;
         } 
+
+        /// <summary>
+        /// Target chain the client will build requests for.
+        /// </summary>
+        /// <value>Set BlockchainEnum value.</value>
+        public BlockchainEnum TargetChain { get { return _api.TargetChain; }}
 
         /// <summary>
         /// Instance of IApproveClient that manages requests with the "Approve" service.

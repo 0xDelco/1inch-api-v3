@@ -7,6 +7,8 @@ namespace OneInch.Api
     {
         Task<string> SendRequest(string path); 
 
-        void SwitchBlockchain(BlockchainEnum blockchain);       
+        void SwitchBlockchain(BlockchainEnum blockchain);     
+
+        BlockchainEnum TargetChain {get;}  
     }
 }

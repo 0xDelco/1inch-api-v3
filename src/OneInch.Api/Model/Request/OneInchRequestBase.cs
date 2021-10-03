@@ -14,6 +14,11 @@ namespace OneInch.Api
     {
         Dictionary<string, string> _parameters = new Dictionary<string, string>();
 
+
+        /// <summary>
+        /// Retrieves public properties for the invoking class type.
+        /// </summary>
+        /// <returns>PropertyInfo array.</returns>
         PropertyInfo[] GetProperties()
         {
             Type t = GetType();
