@@ -13,6 +13,8 @@ namespace OneInch.Api
         public BlockchainSettings Polygon {get;set;}
 
         public BlockchainSettings Optimism {get;set;}
+
+        public BlockchainSettings Arbitrum {get;set;}
     }
 
 }
