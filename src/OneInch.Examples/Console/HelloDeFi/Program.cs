@@ -162,7 +162,12 @@ namespace HelloDeFi
 
                 collection.AddHttpClient(_oneInchSettings.Optimism.ChainId, api =>
                 {
-                    api.BaseAddress = new Uri(_oneInchSettings.Polygon.GetAddress());
+                    api.BaseAddress = new Uri(_oneInchSettings.Optimism.GetAddress());
+                });
+
+                collection.AddHttpClient(_oneInchSettings.Arbitrum.ChainId, api =>
+                {
+                    api.BaseAddress = new Uri(_oneInchSettings.Arbitrum.GetAddress());
                 });
         }
 

@@ -9,6 +9,7 @@ namespace OneInch.Api
         ETHEREUM = 1,
         OPTIMISM = 10,
         BINANCE_SMART_CHAIN = 56,
-        POLYGON = 137
+        POLYGON = 137,
+        ARBITRUM = 42161
     }
 }
