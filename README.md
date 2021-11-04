@@ -12,6 +12,7 @@ Each of the objects in the domain are meant to provide the inbound and outbound 
 - ✅ Binance Smart Chain
 - ✅ Polygon
 - ✅ Optimism
+- ✅ Arbitrum
 
 
 ## Getting Started
