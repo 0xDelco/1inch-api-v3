@@ -2,6 +2,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Net.Http;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 using OneInch.Api;
 
@@ -59,6 +61,23 @@ namespace OneInch.Test
         public void Verify_Reset_Default_Chain()
         {
             var mockFactory = new Mock<IHttpClientFactory>();
+            IHttpClientFactory factory = mockFactory.Object;
+            var api = new OneInchApiAdapter(factory);
+            api.SetDefaultChain();
+            Assert.IsTrue(api.TargetChain == BlockchainEnum.ETHEREUM);
+        }
+
+        /// <summary>
+        /// Tests successful HttpClient request.
+        /// </summary>
+        [TestMethod]
+        public void Request_Success_HttpClient()
+        {
+            var mockFactory = new Mock<IHttpClientFactory>();
+            var mockHttp = new Mock<HttpMessageHandler>();
+            //mockHttp.Setup(_ => _.)
+            //("SendAsync", It.IsAny<HttpRequestMessage>(), It.IsAny<CancellationToken>())
+                    //.ReturnsAsync(new HttpResponseMessage { StatusCode = HttpStatusCode.OK });
             IHttpClientFactory factory = mockFactory.Object;
             var api = new OneInchApiAdapter(factory);
             api.SetDefaultChain();

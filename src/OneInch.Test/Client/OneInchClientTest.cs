@@ -10,6 +10,9 @@ namespace OneInch.Test
     [TestClass]
     public class OneInchClientTest
     {
+        /// <summary>
+        /// Tests that no exception is thrown if the required dependencies are provided.
+        /// </summary>
         [TestMethod]
         public void ArgumentsNotNull()
         {
@@ -18,6 +21,9 @@ namespace OneInch.Test
             var api = new OneInchClient(factory);
         }
 
+        /// <summary>
+        /// Tests that an argument null exception is thrown if IApiAdapter is null.
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void ArgumentsNull_IApiAdapter()
@@ -26,7 +32,7 @@ namespace OneInch.Test
         }
 
         /// <summary>
-        /// Verifies default target chain is Ethereum when the client is initially invoked.
+        /// Verifies underlying chain switch method has been called.
         /// </summary>
         [TestMethod]
         public void Verify_Chain_Switching()
