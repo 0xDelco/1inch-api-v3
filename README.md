@@ -1,6 +1,6 @@
-# **1inch .NET API Client (v3)**
+# **1inch .NET API Client (v4)**
 
-A .NET client library targeting **v3** of the [1inch](https://app.1inch.io) DeFi aggregator [API](https://docs.1inch.io/api/). The intention is to provide a simple wrapper to consume and model each of the available REST end points.
+A .NET client library targeting **v4** of the [1inch](https://app.1inch.io) DeFi aggregator [API](https://docs.1inch.io/api/). The intention is to provide a simple wrapper to consume and model each of the available REST end points.
 
 Each of the objects in the domain are meant to provide the inbound and outbound structures needed to interact with the API in a straight forward and object oriented way.
 
